@@ -10,11 +10,9 @@ const form_input_insert_data = document.getElementById(
 );
 var p = document.querySelectorAll("p");
 var small = document.querySelector("small");
-
 var toggle_state = true;
 
-
-const counter_list = () => {
+function counter_list() {
     let counter = 0;
     for (let index = 0; index < data_todo_list.length; index++) {
         counter += 1;
@@ -23,6 +21,18 @@ const counter_list = () => {
 }
 
 count_list.innerHTML = `${ counter_list().toString() } items left`;
+
+for (let index = 0; index < data_todo_list.length; index++) {
+    const element = data_todo_list[index];
+    let check_input = element.querySelector("input[type=checkbox]");
+    check_input.addEventListener('click', (event) => {
+        if (event.target.checked) {
+            element.querySelector("p").classList.add("line-through");
+        } else {
+            element.querySelector("p").classList.remove("line-through");
+        }
+    })
+}
 
 form_input_insert_data.addEventListener("submit", (event) => {
     let check_empty = form_input_insert_data.querySelector('input[type=text]').value == 0 ? true : false;
@@ -34,6 +44,7 @@ form_input_insert_data.addEventListener("submit", (event) => {
         return true;
     }
 })
+
 
 theme_switch.addEventListener("click", (event) => {
     if (toggle_state) {

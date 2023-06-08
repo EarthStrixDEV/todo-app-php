@@ -30,15 +30,15 @@ $result = $pdo->query($sql);
             </div>
             <form class="flex flex-row items-center px-6 py-3 rounded-md bg-slate-800 my-3" action="form.php" method="post" id="form_input_insert_data">
                 <input type="checkbox" name="" id="" class=" w-6 h-6 rounded-full" />
-                <input type="text" name="todo_track_input" id="" class="bg-inherit text-white p-3 mx-3 w-full border-0 focus:outline-0" placeholder="Create a new todo...">
+                <input type="text" name="todo_task_input" id="" class="bg-inherit text-white p-3 mx-3 w-full border-0 focus:outline-0" placeholder="Create a new todo...">
                 <button type="submit" name="submit" class="text-base text-gray-700 font-bold hover:text-violet-500">Add</button>
             </form>
             <div class="rounded-lg overflow-hidden shadow-xl">
                 <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
                     <div class="flex flex-row items-center p-6 bg-slate-800 border-b-2 border-gray-600 data_todo_list">
-                        <input type="checkbox" name="" id="" class="mr-3 w-6 h-6 rounded-full" />
-                        <p class="text-gray-300 tracking-wide whitespace-pre-wrap font-bold px-4 flex-1"><?php echo $row['todo_track']; ?></p>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="text-base text-gray-700 font-bold hover:text-violet-500" onclick="return confirm('Are you sure to delete this track?');">Delete</a>
+                        <input type="checkbox" name="check_complete_task" id="" class="mr-3 w-6 h-6 rounded-full" />
+                        <p class="text-gray-300 tracking-wide whitespace-pre-wrap font-bold px-4 flex-1"><?php echo $row['todo_task']; ?></p>
+                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="text-base text-gray-700 font-bold hover:text-violet-500" onclick="return confirm('Are you sure to delete this task?');">Delete</a>
                     </div>
                 <?php } ?>
                 <div class="flex flex-row flex flex-row items-center justify-between p-6 bg-slate-800 menu_footer">

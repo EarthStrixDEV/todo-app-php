@@ -12,4 +12,5 @@ try {
 } catch (PDOException $e) {
     $_SESSION['error'] = "error while executing SQL statement ".$e->getMessage();
 }
+
 ?>
